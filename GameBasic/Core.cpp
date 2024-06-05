@@ -3,6 +3,8 @@
 
 #include "TimeManager.h"
 #include "KeyManager.h"
+#include "SceneManager.h"
+
 #include "Object.h"
 
 Object obj;
@@ -47,6 +49,7 @@ int Core::Init(HWND _handle, POINT _ptResolution)
 	// Manager초기화
 	TimeManager::Instance()->Init();
 	KeyManager::Instance()->init();
+	SceneManager::Instance()->init();	// 모든 씬 생성
 
 	obj.setPos(Vec2((float)(ptResolution.x / 2), (float)(ptResolution.y / 2)));
 	obj.setScale(Vec2(100, 100));
@@ -60,41 +63,13 @@ void Core::Progress()
 	TimeManager::Instance()->update();
 	KeyManager::Instance()->update();
 
-	Update();
+	SceneManager::Instance()->update();
 
-	Render();
-}
-
-
-void Core::Update()
-{
-	Vec2 vPos = obj.getPos();
-
-	// 수정
-	if (KeyManager::Instance()->GetKeyState(KEY::LEFT)==KEY_STATE::AWAY) {
-		vPos.x -= 200.f * TimeManager::Instance()->getfDT();
-	}
-	if (KeyManager::Instance()->GetKeyState(KEY::RIGHT) == KEY_STATE::AWAY) {
-		vPos.x += 200.f * TimeManager::Instance()->getfDT();
-	}
-
-	obj.setPos(vPos);
-}
-
-void Core::Render()
-{
+	// Rendering
 	// 화면 clear
 	Rectangle(mDC, -1, -1, ptResolution.x + 1, ptResolution.y + 1);
 
-	Vec2 vPos = obj.getPos();
-	Vec2 vScale = obj.getScale();
+	SceneManager::Instance()->render(mDC);
 
-	Rectangle(mDC,
-		int(vPos.x - vScale.x / 2.f),
-		int(vPos.y - vScale.y / 2.f),
-		int(vPos.x + vScale.x / 2.f),
-		int(vPos.y + vScale.y / 2.f));
-
-	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y,   // 목적지, 복사 받을 부위
-		mDC, 0, 0, SRCCOPY);  // 복사 대상
+	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y, mDC, 0, 0, SRCCOPY); 
 }

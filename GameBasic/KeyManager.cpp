@@ -60,7 +60,7 @@ void KeyManager::init()
 
 void KeyManager::update()
 {
-	// 윈도우 포커싱 알아내기.
+	// 윈도우 포커싱 알아내기 -> 창 내려갈 때의 처리
 	// HWND mainWnd = Core::Instance()->getMainHandle();
 	HWND hWnd = GetFocus();
 
