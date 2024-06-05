@@ -7,8 +7,6 @@
 
 #include "Object.h"
 
-Object obj;
-
 Core::Core()
 	:handle(0)
 	, ptResolution{}
@@ -50,9 +48,6 @@ int Core::Init(HWND _handle, POINT _ptResolution)
 	TimeManager::Instance()->Init();
 	KeyManager::Instance()->init();
 	SceneManager::Instance()->init();	// ¸ðµç ¾À »ý¼º
-
-	obj.setPos(Vec2((float)(ptResolution.x / 2), (float)(ptResolution.y / 2)));
-	obj.setScale(Vec2(100, 100));
 
 	return S_OK;
 }

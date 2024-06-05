@@ -15,7 +15,7 @@ public:
 	Vec2 getScale() { return vScale; }
 
 public:
-	void update();
-	void render(HDC _hdc);
+	virtual void update() = 0;
+	virtual void render(HDC _hdc);
 };
 

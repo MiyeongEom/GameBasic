@@ -13,4 +13,5 @@ public:
 	int Init(HWND _hWnd, POINT _ptResolution);
 	void Progress();
 	HWND getMainHandle() { return handle; }
+	POINT GetResolution() { return ptResolution; }
 };
