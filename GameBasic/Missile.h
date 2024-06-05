@@ -3,7 +3,8 @@
 
 class Missile : public Object {
 private:
-	float		dir;  // 방향 (위/아래)
+	float		theta;  
+	Vec2		dir;	// 방향을 갖고 있다
 
 public:
 	Missile();
@@ -12,13 +13,10 @@ public:
 	virtual void update();
 	virtual void render(HDC _hdc);
 
-	void SetDir(bool _up) 
-	{ 
-		if (_up)
-			dir = -1.f;
-		else
-			dir = 1.f;
+	void SetDir(float _th) { theta = _th; }
+	void SetDir(Vec2 _dir)
+	{
+		dir = _dir;
+		dir.Normalize();
 	}
 };
-
- 

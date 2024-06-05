@@ -43,7 +43,7 @@ void Player::CreateMissile()
 	Missile* missile = new Missile;
 	missile->setPos(missilePos);
 	missile->setScale(Vec2(25.f, 25.f));
-	missile->SetDir(true);
+	missile->SetDir(Vec2(-1.f, -7.f));
 
 	// ÇöÀç¾À ¾ò¾î¿È
 	Scene* curScenes = SceneManager::Instance()->GetCurScene();
