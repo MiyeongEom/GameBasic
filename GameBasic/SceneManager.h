@@ -9,11 +9,13 @@ class SceneManager{
 
 private:
 	Scene*	arrScene[(UINT)SCENE_TYPE::END];	// ¸ðµç ¾À ¸ñ·Ï
-	Scene* currScene;							// ÇöÀç¾À
+	Scene*	currScene;							// ÇöÀç¾À
 
 public:
 	void init();
 	void update();
 	void render(HDC _hdc);
+
+	Scene* GetCurScene() { return currScene; }
 };
 

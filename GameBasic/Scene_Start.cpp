@@ -39,7 +39,6 @@ void Scene_Start::Enter()
 		monsterObj->SetMoveDist(moveDist);
 		monsterObj->setScale(Vec2(objScale, objScale));
 		AddObject(monsterObj, GROUP_TYPE::DEFAULT);
-
 	}
 }
 
