@@ -61,6 +61,9 @@
     <Filter Include="Engine\03. Manager\Path">
       <UniqueIdentifier>{437b66e5-a026-41d2-8160-54fb5833aabd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\Resource">
+      <UniqueIdentifier>{a98a7ced-d823-43c5-8659-17f698246616}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -126,6 +129,9 @@
     <ClInclude Include="PathManager.h">
       <Filter>Engine\03. Manager\Path</Filter>
     </ClInclude>
+    <ClInclude Include="ResManager.h">
+      <Filter>Engine\03. Manager\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -172,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="PathManager.cpp">
       <Filter>Engine\03. Manager\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="ResManager.cpp">
+      <Filter>Engine\03. Manager\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

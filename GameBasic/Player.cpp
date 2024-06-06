@@ -8,23 +8,19 @@
 #include "Scene.h"
 #include "Missile.h"
 
-#include "PathManager.h"
+#include "ResManager.h"
 #include "Texture.h"
 
 Player::Player()
 	: tex(nullptr)
 {
 	// Texture Loading
-	tex = new Texture;
-	wstring strPath = PathManager::Instance()->GetContentPath();
-	strPath += L"Texture\\Player.bmp";
-	tex->Load(strPath);
+	tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\Player.bmp");
 }
+
 
 Player::~Player()
 {
-	if(nullptr != tex)
-		delete tex;
 }
 
 void Player::update()
@@ -64,15 +60,6 @@ void Player::render(HDC _dc)
 	vPos.x - (float)(width / 2);
 	vPos.y - (float)(height / 2);
 
-	/*BitBlt(_dc
-		,int(vPos.x - (float)(width / 2))
-		,int(vPos.y - (float)(height / 2))
-		,width, height
-		, tex->GetDC()
-		, 0, 0, SRCCOPY);*/
-
-	// 255 0 255 -> 마젠타 색상 (현실에서 거의 안쓰는 색)
-	// library 필요
 	TransparentBlt(_dc
 		, int(vPos.x - (float)(width / 2))
 		, int(vPos.y - (float)(height / 2))
