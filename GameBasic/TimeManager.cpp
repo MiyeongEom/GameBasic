@@ -31,7 +31,10 @@ void TimeManager::update()
 
 	dDT = (double)(curCount.QuadPart - prevCount.QuadPart) / (double)prequency.QuadPart;
 	prevCount = curCount;
+}
 
+void TimeManager::render()
+{
 	++iCallCount;
 	dAcc += dDT;
 

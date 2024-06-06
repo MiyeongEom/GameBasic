@@ -7,6 +7,9 @@
 
 #include "Core.h"
 
+#include "PathManager.h"
+#include "Texture.h"
+
 Scene_Start::Scene_Start()
 {
 

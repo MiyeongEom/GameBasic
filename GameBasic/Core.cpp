@@ -4,6 +4,7 @@
 #include "TimeManager.h"
 #include "KeyManager.h"
 #include "SceneManager.h"
+#include "PathManager.h"
 
 #include "Object.h"
 
@@ -45,6 +46,7 @@ int Core::Init(HWND _handle, POINT _ptResolution)
 	DeleteObject(hOldBit);
 
 	// Manager초기화
+	PathManager::Instance()->init();
 	TimeManager::Instance()->Init();
 	KeyManager::Instance()->init();
 	SceneManager::Instance()->init();	// 모든 씬 생성
@@ -67,4 +69,6 @@ void Core::Progress()
 	SceneManager::Instance()->render(mDC);
 
 	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y, mDC, 0, 0, SRCCOPY); 
+
+	// TimeManager::Instance()->render();
 }
