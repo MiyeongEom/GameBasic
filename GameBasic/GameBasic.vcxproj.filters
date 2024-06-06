@@ -64,6 +64,12 @@
     <Filter Include="Engine\03. Manager\Resource">
       <UniqueIdentifier>{a98a7ced-d823-43c5-8659-17f698246616}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Component">
+      <UniqueIdentifier>{e862967b-f06b-46eb-acf8-69c9fe58f571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08. Module">
+      <UniqueIdentifier>{356230a5-eac9-48b6-8432-607dbc0fe10e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -132,6 +138,12 @@
     <ClInclude Include="ResManager.h">
       <Filter>Engine\03. Manager\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGDI.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -181,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="ResManager.cpp">
       <Filter>Engine\03. Manager\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Engine\07. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGDI.cpp">
+      <Filter>Engine\08. Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

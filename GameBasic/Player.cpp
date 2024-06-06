@@ -11,11 +11,16 @@
 #include "ResManager.h"
 #include "Texture.h"
 
+#include "Collider.h"
+
 Player::Player()
 	: tex(nullptr)
 {
 	// Texture Loading
 	tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\Player.bmp");
+
+	CreateCollider();	// 충돌 필요한 애들 다 넣어주기.
+	GetCollider()->SetScale(Vec2(80.f, 90.f));
 }
 
 
@@ -67,6 +72,9 @@ void Player::render(HDC _dc)
 		, tex->GetDC()
 		, 0, 0, width, height
 		, RGB(255, 0, 255));
+
+	// 컴포넌트(충돌체 등) 가 있는 경우 렌더
+	commponentRender(_dc);
 }
 
 void Player::CreateMissile()

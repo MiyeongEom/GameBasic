@@ -28,6 +28,28 @@ public:
 		y = (float)_pt.y;
 	}
 
+	Vec2 operator +(Vec2 other)
+	{
+		return Vec2(x + other.x, y + other.y);
+	}
+
+	Vec2 operator -(Vec2 other)
+	{
+		return Vec2(x - other.x, y - other.y);
+	}
+
+	Vec2 operator *(Vec2 other)
+	{
+		return Vec2(x * other.x, y * other.y);
+	}
+
+	Vec2 operator /(Vec2 other)
+	{
+		assert(!(0.f == other.x || 0.f == other.y));
+		return Vec2(x / other.x, y / other.y);
+	}
+
+
 	Vec2()
 		: x(0.f)
 		, y(0.f)

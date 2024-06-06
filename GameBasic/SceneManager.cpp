@@ -36,6 +36,7 @@ void SceneManager::update()
 {
 	// 현재 씬 업데이트
 	currScene->update();
+	currScene->finalUpdate();
 }
 
 void SceneManager::render(HDC _hdc)

@@ -14,6 +14,8 @@ Core::Core()
 	, hDC(0)
 	, hBit(0)
 	, mDC(0)
+	, arrBrush{}
+	, arrPen{}
 {
 
 }
@@ -24,6 +26,9 @@ Core::~Core()
 
 	DeleteDC(mDC);
 	DeleteObject(hBit);
+
+	for (int i = 0; i < (UINT)PEN_TYPE::END; ++i)
+		DeleteObject(arrPen[i]);
 }
 
 int Core::Init(HWND _handle, POINT _ptResolution)
@@ -44,6 +49,9 @@ int Core::Init(HWND _handle, POINT _ptResolution)
 
 	HBITMAP hOldBit = (HBITMAP)SelectObject(mDC, hBit);
 	DeleteObject(hOldBit);
+
+	// 자주 사용 할 펜 및 브러쉬 생성
+	CreateBrushPen();
 
 	// Manager초기화
 	PathManager::Instance()->init();
@@ -71,4 +79,15 @@ void Core::Progress()
 	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y, mDC, 0, 0, SRCCOPY); 
 
 	// TimeManager::Instance()->render();
+}
+
+void Core::CreateBrushPen()
+{
+	// Hollow Brush
+	arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
+
+	// Red / Blue / Green Pen
+	arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
+	arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
 }

@@ -1,5 +1,4 @@
 #pragma once
-// 벡터는 데이터를 넣지 않는 이상 메모리 안먹음
 class Object;
 
 class Scene {
@@ -15,6 +14,7 @@ public:
 	const wstring& GetName() { return strName; }
 
 	void update();
+	void finalUpdate();
 	void render(HDC _hdc);
 
 	virtual void Enter() = 0;	

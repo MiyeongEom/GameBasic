@@ -25,6 +25,15 @@ void Scene::update()
 	}
 }
 
+void Scene::finalUpdate()
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
+		for (size_t j = 0; j < arrObj[i].size(); ++j) {
+			arrObj[i][j]->finalUpdate();
+		}
+	}
+}
+
 void Scene::render(HDC _hdc)
 {
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {

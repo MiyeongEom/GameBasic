@@ -8,6 +8,7 @@ Missile::Missile()
 	, dir(Vec2(1.f, 1.f))
 {
 	dir.Normalize();
+	CreateCollider();
 }
 
 Missile::~Missile()

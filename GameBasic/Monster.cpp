@@ -9,6 +9,7 @@ Monster::Monster()
 	, maxDis(50.f)		
 	, dir(1)
 {
+	CreateCollider();
 }
 
 Monster::~Monster()
