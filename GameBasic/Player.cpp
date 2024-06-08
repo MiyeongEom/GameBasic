@@ -20,7 +20,8 @@ Player::Player()
 	tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\Player.bmp");
 
 	CreateCollider();	// 충돌 필요한 애들 다 넣어주기.
-	GetCollider()->SetScale(Vec2(80.f, 90.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
+	GetCollider()->SetScale(Vec2(40.f, 50.f));
 }
 
 

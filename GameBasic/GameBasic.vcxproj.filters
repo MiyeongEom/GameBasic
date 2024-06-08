@@ -70,6 +70,9 @@
     <Filter Include="Engine\08. Module">
       <UniqueIdentifier>{356230a5-eac9-48b6-8432-607dbc0fe10e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\Collider">
+      <UniqueIdentifier>{1429f8a0-4f52-48f4-a6f6-203e7ad767b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -144,6 +147,9 @@
     <ClInclude Include="SelectGDI.h">
       <Filter>Engine\08. Module</Filter>
     </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>Engine\03. Manager\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -199,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="SelectGDI.cpp">
       <Filter>Engine\08. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="ColliderManager.cpp">
+      <Filter>Engine\03. Manager\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

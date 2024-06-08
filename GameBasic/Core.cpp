@@ -5,6 +5,7 @@
 #include "KeyManager.h"
 #include "SceneManager.h"
 #include "PathManager.h"
+#include "ColliderManager.h"
 
 #include "Object.h"
 
@@ -69,6 +70,7 @@ void Core::Progress()
 	KeyManager::Instance()->update();
 
 	SceneManager::Instance()->update();
+	ColliderManager::Instance()->update();
 
 	// Rendering
 	// È­¸é clear

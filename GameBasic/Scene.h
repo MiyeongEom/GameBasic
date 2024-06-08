@@ -25,4 +25,9 @@ public:
 	{
 		arrObj[(UINT)type].push_back(obj);
 	}
+
+	const vector<Object*>& GetGroupObject(GROUP_TYPE _type) // 원본을 참조하여야 하기에 const &
+	{
+		return  arrObj[(UINT)_type];
+	}
 };

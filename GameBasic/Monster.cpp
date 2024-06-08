@@ -2,6 +2,7 @@
 #include "Monster.h"
 
 #include "TimeManager.h"
+#include "Collider.h"
 
 Monster::Monster()
 	: speed(100.f)
@@ -10,6 +11,7 @@ Monster::Monster()
 	, dir(1)
 {
 	CreateCollider();
+	GetCollider()->SetScale(Vec2(42.f, 42.f));
 }
 
 Monster::~Monster()
