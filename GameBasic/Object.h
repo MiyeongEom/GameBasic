@@ -4,6 +4,7 @@ class Collider;
 
 class Object {
 private:
+	wstring		strName;
 	Vec2		vPos;
 	Vec2		vScale;
 	Collider*	collider;	// 필요하면 사용, 필요 없으면 nullptr
@@ -20,6 +21,10 @@ public:
 
 	Collider* GetCollider() { return collider; }
 	void CreateCollider();
+
+	virtual void OnCollision(Collider* _other) {}
+	virtual void OnCollisionEnter(Collider* _other) {}
+	virtual void OnCollisionExit(Collider* _other) {}
 
 public:
 	virtual void update() = 0;

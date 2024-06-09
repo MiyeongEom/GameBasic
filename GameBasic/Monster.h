@@ -20,5 +20,7 @@ public:
 	void SetSpeed(float spd) { speed = spd; }
 	void SetMoveDist(float dis) { maxDis = dis; }
 	void SetCenterPos(Vec2 _pos) { centerPos = _pos; }
+
+	virtual void OnCollisionEnter(Collider* _other);
 };
 

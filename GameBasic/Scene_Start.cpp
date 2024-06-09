@@ -30,7 +30,7 @@ void Scene_Start::Enter()
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
 	// Monster
-	int monCount = 5;
+	int monCount = 2;
 	float moveDist = 25.f;
 	float objScale = 50.f;
 	Vec2 resolutions = Core::Instance()->GetResolution();
@@ -46,16 +46,10 @@ void Scene_Start::Enter()
 		AddObject(monsterObj, GROUP_TYPE::MONSTER);
 	}
 
-	// 충돌지정
-	// PLAYER-MONSTER 그룹 간의 충돌체크
-	// 검사 시점은 DT라는 시간동안 진행된 update, finalUpdate 이후
-	// 충돌의 변경사항을 체크하도록 하고 그 후 랜더링하도록 한다.
 	ColliderManager::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 }
 
 void Scene_Start::Exit()
 {
-	// 다른씬으로 전환될 때 이 함수가 실행되는데
-	// 충돌 그룹을 해제해야 한다.
 	ColliderManager::Instance()->Reset();
 }

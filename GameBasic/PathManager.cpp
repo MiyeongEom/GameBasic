@@ -27,5 +27,5 @@ void PathManager::init()
 
 	wcscat_s(contentPath, 255, L"\\bin\\Content\\");
 
-	SetWindowText(Core::Instance()->getMainHandle(), contentPath);
+	// SetWindowText(Core::Instance()->getMainHandle(), contentPath);
 }
