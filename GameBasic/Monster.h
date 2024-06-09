@@ -7,6 +7,7 @@ private:
 	float		maxDis;	// 최대 이동거리
 	int			dir;	// 방향(1, -1)
 	Vec2		centerPos; // 중앙 기준점
+	int			hp;
 
 public:
 	Monster();

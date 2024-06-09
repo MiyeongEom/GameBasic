@@ -57,12 +57,14 @@ void Collider::OnCollision(Collider* _other)
 
 void Collider::OnCollisionEnter(Collider* _other)
 {
+	// col = true; -> 충돌체가 여러 개인 경우 문제 발생.
 	++col;
 	owner->OnCollisionEnter(_other);
 }
 
 void Collider::OnCollisionExit(Collider* _other)
 {
+	// col = false;
 	--col;
 	owner->OnCollisionExit(_other);
 }

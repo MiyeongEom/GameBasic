@@ -25,7 +25,8 @@
 enum class GROUP_TYPE {
 	DEFAULT,
 	PLAYER,
-	MISSTLE,
+	PROJ_PALYER,		// 플레이어가 쏜 투사체
+	PROJ_MONSTER,		// 몬스터가 쏜 투사체
 	MONSTER,
 
 	END = 32,
@@ -53,7 +54,10 @@ enum class PEN_TYPE {
 	END,
 };
 
+enum class EVENT_TYPE {
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	SCENE_CHAGNE,
 
-// 수 많은 오브젝트가 있기 때문에 이를 다 충돌처리 하는 것은 양이 너무 많다.
-// 따라서 그룹끼리 충돌 검사를 하도록 한다
-// 우리가 지금까지 만든 오브젝트를 해당 그룹에 넣자.
+	END,
+};

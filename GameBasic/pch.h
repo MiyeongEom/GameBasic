@@ -20,6 +20,7 @@ using std::wstring;
 
 #include "define.h"
 #include "struct.h"
+#include "func.h"
 
 #ifdef _UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")

@@ -39,6 +39,7 @@ void Scene_Start::Enter()
 	Monster* monsterObj = nullptr;
 	for (int i = 0; i < monCount; ++i) {
 		monsterObj = new Monster;
+		monsterObj->SetName(L"Monster");
 		monsterObj->SetCenterPos(Vec2((moveDist + objScale / 2.f) + (float)i * term, 50.f));
 		monsterObj->setPos(Vec2(monsterObj->GetCenterPos()));
 		monsterObj->SetMoveDist(moveDist);
@@ -47,6 +48,7 @@ void Scene_Start::Enter()
 	}
 
 	ColliderManager::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
+	ColliderManager::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PALYER);
 }
 
 void Scene_Start::Exit()

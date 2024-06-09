@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "PathManager.h"
 #include "ColliderManager.h"
+#include "EventManager.h"
 
 #include "Object.h"
 
@@ -81,6 +82,9 @@ void Core::Progress()
 	BitBlt(hDC, 0, 0, ptResolution.x, ptResolution.y, mDC, 0, 0, SRCCOPY); 
 
 	// TimeManager::Instance()->render();
+
+	// 이벤트 지연처리 (맨 마지막에 수행해서 다음 프레임에 반영되어야 함)
+	EventManager::Instance()->update();
 }
 
 void Core::CreateBrushPen()

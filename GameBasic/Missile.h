@@ -19,4 +19,6 @@ public:
 		dir = _dir;
 		dir.Normalize();
 	}
+
+	virtual void OnCollisionEnter(Collider* _other);
 };

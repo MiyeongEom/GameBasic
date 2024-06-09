@@ -31,6 +31,14 @@ void TimeManager::update()
 
 	dDT = (double)(curCount.QuadPart - prevCount.QuadPart) / (double)prequency.QuadPart;
 	prevCount = curCount;
+
+#ifdef _DEBUG
+	// 디버그 모드에서 중단점 오래 걸어두면
+	// 시간이 말도 안되게 커질 수 있음
+	if (dDT > (1. / 60.))
+		dDT = (1. / 60.);
+#endif
+	
 }
 
 void TimeManager::render()

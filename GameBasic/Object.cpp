@@ -9,6 +9,7 @@ Object::Object()
 	: vPos{}
 	, vScale{}
 	, collider(nullptr)
+	, act(true)		// 모든 오브젝트는 생성 당시 살아있음
 {
 }
 

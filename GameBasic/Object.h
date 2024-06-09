@@ -7,7 +7,9 @@ private:
 	wstring		strName;
 	Vec2		vPos;
 	Vec2		vScale;
-	Collider*	collider;	// 필요하면 사용, 필요 없으면 nullptr
+	Collider*	collider;
+
+	bool		act;		// 활성화 상태
 
 public:
 	Object();
@@ -18,6 +20,12 @@ public:
 
 	Vec2 getPos() { return vPos; }
 	Vec2 getScale() { return vScale; }
+
+	// 이름 관련 함수 설정
+	void SetName(const wstring& _str) { strName = _str; }
+	const wstring& GetName() { return strName; }
+
+	bool IsDead() { return !act; }
 
 	Collider* GetCollider() { return collider; }
 	void CreateCollider();
@@ -32,5 +40,8 @@ public:
 	virtual void finalUpdate() final;
 
 	void commponentRender(HDC _hdc);
+
+	void SetDead() { act = false; }		// 무조건 이벤트 클래스만 사용가능
+	friend class EvenManager;
 };
 

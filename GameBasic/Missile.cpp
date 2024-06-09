@@ -2,6 +2,7 @@
 #include "Missile.h"
 
 #include "TimeManager.h"
+#include "Collider.h"
 
 Missile::Missile()
 	: theta(PI/4.f)
@@ -9,6 +10,7 @@ Missile::Missile()
 {
 	dir.Normalize();
 	CreateCollider();
+	GetCollider()->SetScale(Vec2(15.f, 15.f));	// 크기 설정
 }
 
 Missile::~Missile()
@@ -35,4 +37,14 @@ void Missile::render(HDC _hdc)
 
 	Ellipse(_hdc, (int)(vPos.x - vScale.x / 2.f), (int)(vPos.y - vScale.y / 2.f),
 		(int)(vPos.x + vScale.x / 2.f), (int)(vPos.y + vScale.y / 2.f));
+	commponentRender(_hdc);
+}
+
+void Missile::OnCollisionEnter(Collider* _other)
+{
+	Object* other = _other->GetObj();
+
+	if (other->GetName() == L"Monster") {
+		DeleteObject(this);
+	}
 }

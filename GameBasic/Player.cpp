@@ -84,11 +84,11 @@ void Player::CreateMissile()
 	missilePos.y -= getScale().y / 2.f;
 
 	Missile* missile = new Missile;
+	missile->SetName(L"Missile_player");
 	missile->setPos(missilePos);
 	missile->setScale(Vec2(25.f, 25.f));
 	missile->SetDir(Vec2(0.f, -1.f));
 
-	// 현재씬 얻어옴
-	Scene* curScenes = SceneManager::Instance()->GetCurScene();
-	curScenes->AddObject(missile, GROUP_TYPE::DEFAULT);
+	// 현재씬에서 바로 추가하지 않고 이벤트를 생성하는 것 -> 함수 호출
+	CreateObject(missile,GROUP_TYPE::PROJ_PALYER);
 }

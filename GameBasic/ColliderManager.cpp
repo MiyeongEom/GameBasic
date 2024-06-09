@@ -60,14 +60,30 @@ void ColliderManager::CollisionUpdateGroup(GROUP_TYPE _left, GROUP_TYPE _right)
 				// 현재 충돌 중이다
 				if (iter->second) {
 					// 이전에도 충돌하고 있었다 - 충돌 중
-					leftCol->OnCollision(rightCol);
-					rightCol->OnCollision(leftCol);
+
+					if (vecLeft[i]->IsDead() || vecRight[j]->IsDead()) {
+						// 근데 둘 중 하나가 삭제 예정이라면,
+						// 충돌 해제한다.
+						leftCol->OnCollisionExit(rightCol);
+						rightCol->OnCollisionExit(leftCol);
+						iter->second - false;
+					}
+					else {
+						leftCol->OnCollision(rightCol);
+						rightCol->OnCollision(leftCol);
+					}
 				}
 				else {
 					// 이전에는 충돌하지 않았다 - 막 충돌함
-					leftCol->OnCollisionEnter(rightCol);
-					rightCol->OnCollisionEnter(leftCol);
-					iter->second = true;
+
+					if (!vecLeft[i]->IsDead() || vecRight[j]->IsDead()) {
+						// 근데 둘 중 하나가 삭제 예정이라면,
+						// = 충돌하려는 순간 삭제될 것 같아
+						// 충돌 하지 않은 것으로 취급
+						leftCol->OnCollisionEnter(rightCol);
+						rightCol->OnCollisionEnter(leftCol);
+						iter->second = true;
+					}
 				}
 			}
 			else {	// 현재 충돌하고 있지 않다.
@@ -128,13 +144,3 @@ void ColliderManager::CheckGroup(GROUP_TYPE _left, GROUP_TYPE _right)
 		arrCheck[row] |= (1 << col);	// 1을 col만큼 밀어서 넣어주는 중
 	}
 }
-
-// 같은 충돌이 발생하였더라도 해야 할 일은 다르다
-// ex) player-monster | player hp감소, monster 때리는 모션 등
-// 이걸 상속 받아서 해야할까? - 너무 복잡하당
-
-// 다형성을 이용하자. 충돌체는 충돌을 소유하고 있는 오브젝트 클래스를 자세하게는 모르나
-// 충돌체 내부에서 오브젝트를 가르킬 수는 있다.
-// 충돌체 내부에서 충돌 이벤트를 가상함수로 만들어놨으면
-// 충돌체는 오브젝트에 이를 알려주고 알아서 처리하도록 하면 되지 않을까
-// -> Object.h
