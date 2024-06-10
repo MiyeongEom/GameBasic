@@ -7,6 +7,7 @@
 #include "PathManager.h"
 #include "ColliderManager.h"
 #include "EventManager.h"
+#include "Camera.h"
 
 #include "Object.h"
 
@@ -69,6 +70,7 @@ void Core::Progress()
 	// Manager update
 	TimeManager::Instance()->update();
 	KeyManager::Instance()->update();
+	Camera::Instance()->update();
 
 	SceneManager::Instance()->update();
 	ColliderManager::Instance()->update();

@@ -37,6 +37,9 @@ int arrVK[(int)KEY::LAST] =
 	VK_RETURN,	// ENTER,
 	VK_ESCAPE,	// ESC,
 
+	VK_LBUTTON,
+	VK_RBUTTON,
+
 	// LAST, 
 };
 
@@ -86,6 +89,12 @@ void KeyManager::update()
 				}
 				vecKey[i].prev = false;
 			}
+
+			// Mouse 위치 계산
+			POINT pos = {};
+			GetCursorPos(&pos);	// 현재 마우스 좌표
+			ScreenToClient(Core::Instance()->getMainHandle(), &pos);	// 우리 클라 기준 좌표
+			curMousePos = Vec2((float)pos.x, (float)pos.y);
 		}
 	}
 	else {	// 포커싱 아닐 때

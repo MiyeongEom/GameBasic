@@ -4,6 +4,7 @@
 #include "Object.h"
 #include "Core.h"
 #include "SelectGDI.h"
+#include "Camera.h"
 
 UINT Collider::nextID = 0;
 
@@ -19,6 +20,7 @@ Collider::Collider(const Collider& _ori)
 	, offsetPos(_ori.offsetPos)
 	, scale(_ori.scale)
 	, iID(nextID++)
+	, col(0)
 {
 }
 
@@ -43,11 +45,14 @@ void Collider::render(HDC _hdc)
 
 	SelectGDI p(_hdc, pen);
 	SelectGDI b(_hdc, BRUSH_TYPE::HOLLOW);
+
+	Vec2 renderPos = Camera::Instance()->GetRenderPos(finalPos);
+
 	Rectangle(_hdc
-		, (int)(finalPos.x - scale.x / 2.f)
-		, (int)(finalPos.y - scale.y / 2.f)
-		, (int)(finalPos.x + scale.x / 2.f)
-		, (int)(finalPos.y + scale.y / 2.f));
+		, (int)(renderPos.x - scale.x / 2.f)
+		, (int)(renderPos.y - scale.y / 2.f)
+		, (int)(renderPos.x + scale.x / 2.f)
+		, (int)(renderPos.y + scale.y / 2.f));
 }
 
 void Collider::OnCollision(Collider* _other)

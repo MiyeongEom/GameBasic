@@ -45,8 +45,14 @@ Object::~Object()
 
 void Object::render(HDC _hdc)
 {
-	Rectangle(_hdc, (int)(vPos.x - vScale.x / 2.f), (int)(vPos.y - vScale.y / 2.f),
-		(int)(vPos.x + vScale.x / 2.f), (int)(vPos.y + vScale.y / 2.f));
+	// 출력 좌표 얻어야 함
+	Vec2 renderPos = Camera::Instance()->GetRenderPos(vPos);
+
+	Rectangle(_hdc
+		, (int)(renderPos.x - vScale.x / 2.f)
+		, (int)(renderPos.y - vScale.y / 2.f)
+		, (int)(renderPos.x + vScale.x / 2.f)
+		, (int)(renderPos.y + vScale.y / 2.f));
 
 	commponentRender(_hdc);
 }

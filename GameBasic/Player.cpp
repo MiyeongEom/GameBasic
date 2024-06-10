@@ -44,19 +44,19 @@ void Player::update()
 	Vec2 vPos = getPos();  
 
 	if (KEY_HOLD(KEY::W)) {
-		vPos.y -= 200.f * DT;
+		vPos.y -= 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::S)) {
-		vPos.y += 200.f * DT;
+		vPos.y += 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::A)) {
-		vPos.x -= 200.f * DT;
+		vPos.x -= 200.f * fDT;
 	}
 
 	if (KEY_HOLD(KEY::D)) {
-		vPos.x += 200.f * DT;
+		vPos.x += 200.f * fDT;
 	}
 
 	if (KEY_TAP(KEY::SPACE)) {

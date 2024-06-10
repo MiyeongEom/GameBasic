@@ -13,6 +13,7 @@
 #include "ColliderManager.h"
 #include "KeyManager.h"
 #include "SceneManager.h"
+#include "Camera.h"
 
 Scene_Start::Scene_Start()
 {
@@ -31,6 +32,11 @@ void Scene_Start::update()
 	if (KEY_TAP(KEY::ENTER)) {
 		ChangeSceneEvent(SCENE_TYPE::TOOL);
 	}
+
+	if (KEY_TAP(KEY::LBTN)) {
+		Vec2 lookAt = Camera::Instance()->GetRealPos(MOUSE_POS);	// ·»´õ¸µ ÁÂÇ¥°¡ ¾Æ´Ñ ½ÇÁ¦ ÁÂÇ¥¸¦ Áà¾ßÇÔ
+		Camera::Instance()->SetLookAt(lookAt);
+	}
 }
 
 void Scene_Start::Enter()
@@ -40,6 +46,7 @@ void Scene_Start::Enter()
 	obj->setPos(Vec2(640.f, 384.f));
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
+	// Camera::Instance()->SetTarget(obj);
 
 	// Object* otherPlayer = obj->Clone();
 	// otherPlayer->setPos(Vec2(740.f, 384.f));
@@ -50,7 +57,7 @@ void Scene_Start::Enter()
 	float moveDist = 25.f;
 	float objScale = 50.f;
 	Vec2 resolutions = Core::Instance()->GetResolution();
-	float term = (resolutions.x - ((moveDist + objScale/2.f)* 2)) / (float)(monCount - 1);
+	float term = (resolutions.x - ((moveDist + objScale / 2.f) * 2)) / (float)(monCount - 1);
 
 	Monster* monsterObj = nullptr;
 	for (int i = 0; i < monCount; ++i) {
@@ -65,6 +72,9 @@ void Scene_Start::Enter()
 
 	ColliderManager::Instance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	ColliderManager::Instance()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJ_PALYER);
+
+	// Camera ÁöÁ¤
+	Camera::Instance()->SetLookAt(resolutions / 2.f);
 }
 
 void Scene_Start::Exit()

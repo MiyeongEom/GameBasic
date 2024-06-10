@@ -40,6 +40,8 @@ enum class KEY {
 	SPACE,
 	ENTER,
 	ESC,
+	LBTN,
+	RBTN,
 
 	LAST, // ³¡
 };
@@ -54,6 +56,7 @@ class KeyManager
 	SINGLE(KeyManager);
 private:
 	vector<keyInfo>	vecKey;
+	Vec2			curMousePos;
 
 public:
 	void init();
@@ -61,5 +64,6 @@ public:
 
 public:
 	KEY_STATE GetKeyState(KEY key) { return vecKey[(int)key].state; }
+	Vec2 GetMousePos() { return curMousePos; }
 };
 

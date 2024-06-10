@@ -38,7 +38,7 @@ public:
 	}
 
 	aniFrm& GetFrame(int _idx) { return vecFrm[_idx]; }
-	int GetMaxFrame() { return vecFrm.size(); }
+	int GetMaxFrame() { return (UINT)vecFrm.size(); }
 
 	void update();
 	void render(HDC _dc);

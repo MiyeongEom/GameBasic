@@ -12,9 +12,6 @@
     <Filter Include="Engine\01. Header">
       <UniqueIdentifier>{b6122731-11d2-4b36-8095-e6625819065b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\02. Core">
-      <UniqueIdentifier>{c408d513-0aea-4f43-9700-3b66e7bffc5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Define">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -84,6 +81,12 @@
     </Filter>
     <Filter Include="Engine\07. Component\Animator">
       <UniqueIdentifier>{0ab2c0b4-9fbd-4ac3-9d14-b109e316d415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Core">
+      <UniqueIdentifier>{c408d513-0aea-4f43-9700-3b66e7bffc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\Camera">
+      <UniqueIdentifier>{696566ff-0412-432f-ad03-fabf68c3bf89}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +180,9 @@
     <ClInclude Include="Animation.h">
       <Filter>Engine\07. Component\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\03. Manager\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -236,9 +242,6 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Engine\03. Manager\Event</Filter>
     </ClCompile>
-    <ClCompile Include="func.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Scene_Tool.cpp">
       <Filter>Engine\05. Scene\Scene_Tool</Filter>
     </ClCompile>
@@ -250,6 +253,12 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\07. Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Engine\01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\03. Manager\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

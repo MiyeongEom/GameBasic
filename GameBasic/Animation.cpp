@@ -6,12 +6,14 @@
 #include "Animator.h"
 #include "Texture.h"
 #include "Object.h"
+#include "Camera.h"
 
 Animation::Animation()
 	: animator(nullptr)
 	, tex(nullptr)
 	, curFrm(0)
 	, accTime(0.f)
+	, finish(false)
 {
 }
 
@@ -51,6 +53,8 @@ void Animation::render(HDC _dc)
 	Vec2 pos = obj->getPos();
 	pos += vecFrm[curFrm].offset;	// Object Position에 Offset만큼 추가 이동위치
 
+	pos = Camera::Instance()->GetRenderPos(pos);
+
 	TransparentBlt(_dc
 		, (int)pos.x - vecFrm[curFrm].slice.x / 2.f
 		, (int)pos.y - vecFrm[curFrm].slice.y / 2.f
@@ -69,10 +73,10 @@ void Animation::Create(Texture* _tex, Vec2 _vLT, Vec2 _vRB, Vec2 _step, float _d
 	tex = _tex;
 	
 	aniFrm frm = {};
-	for (UINT i = 0; i < _frameCount; ++i) {
+	for (int i = 0; i < _frameCount; ++i) {
 		frm.duration = _duration;
 		frm.slice = _vRB;
-		frm.vLT = _vLT + _step * i;
+		frm.vLT = _vLT + _step * (float)i;
 
 		vecFrm.push_back(frm);
 	}

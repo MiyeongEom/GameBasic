@@ -13,7 +13,7 @@ public:
 	Vec2& Normalize()
 	{
 		float len = Length();
-		
+
 		assert(len != 0.f);
 
 		x /= len;
@@ -55,9 +55,20 @@ public:
 		return Vec2(x / other.x, y / other.y);
 	}
 
+	Vec2 operator /(float f)
+	{
+		assert(!(0.f == f));
+		return Vec2(x / f, y / f);
+	}
+
 	Vec2 operator * (int _i)
 	{
 		return Vec2(x * (float)_i, y * (float)_i);
+	}
+
+	Vec2 operator * (float _f)
+	{
+		return Vec2(x * _f, y * _f);
 	}
 
 	Vec2()

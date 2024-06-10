@@ -66,7 +66,7 @@ void ColliderManager::CollisionUpdateGroup(GROUP_TYPE _left, GROUP_TYPE _right)
 						// 충돌 해제한다.
 						leftCol->OnCollisionExit(rightCol);
 						rightCol->OnCollisionExit(leftCol);
-						iter->second - false;
+						iter->second = false;
 					}
 					else {
 						leftCol->OnCollision(rightCol);
