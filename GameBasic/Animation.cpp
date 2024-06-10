@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Animation.h"
 
+#include "TimeManager.h"
+
 #include "Animator.h"
 #include "Texture.h"
 #include "Object.h"
@@ -9,6 +11,7 @@ Animation::Animation()
 	: animator(nullptr)
 	, tex(nullptr)
 	, curFrm(0)
+	, accTime(0.f)
 {
 }
 
@@ -18,12 +21,35 @@ Animation::~Animation()
 
 void Animation::update()
 {
+	if (finish)
+		return;
+
+	accTime += fDT;
+
+	// 현재 프레임에 머물러야 할 시간이
+	// 누적시간을 넘으면 다음 프레임
+
+	if (vecFrm[curFrm].duration < accTime) {
+		++curFrm;
+
+		if (vecFrm.size() <= curFrm) {
+			curFrm -= 1;
+			finish = true;
+			accTime = 0.f;
+			return;
+		}
+		accTime = accTime - vecFrm[curFrm].duration;
+	}
 }
 
 void Animation::render(HDC _dc)
 {
+	if (finish)
+		return;
+
 	Object* obj = animator->GetObj();
 	Vec2 pos = obj->getPos();
+	pos += vecFrm[curFrm].offset;	// Object Position에 Offset만큼 추가 이동위치
 
 	TransparentBlt(_dc
 		, (int)pos.x - vecFrm[curFrm].slice.x / 2.f

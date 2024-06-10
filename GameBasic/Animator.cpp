@@ -6,6 +6,7 @@
 Animator::Animator()
 	: owner(nullptr)
 	, curAnim(nullptr)
+	, repeat(false)
 {
 }
 
@@ -37,15 +38,20 @@ Animation* Animator::FindAnimation(const wstring& _strName)
 	return iter->second;
 }
 
-void Animator::Play(const wstring& _strName)
+void Animator::Play(const wstring& _strName, bool _repeat)
 {
 	curAnim = FindAnimation(_strName);
+	repeat = _repeat;
 }
 
 void Animator::update()
 {
-	if (nullptr != curAnim)
+	if (nullptr != curAnim) {
 		curAnim->update();
+		if (repeat && curAnim->IsFinish()) {
+			curAnim->SetFrame(0);
+		}
+	}
 }
 
 void Animator::render(HDC _dc)

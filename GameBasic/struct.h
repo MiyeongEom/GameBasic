@@ -33,6 +33,12 @@ public:
 		return Vec2(x + other.x, y + other.y);
 	}
 
+	void operator += (Vec2 other)
+	{
+		x += other.x;
+		y += other.y;
+	}
+
 	Vec2 operator -(Vec2 other)
 	{
 		return Vec2(x - other.x, y - other.y);

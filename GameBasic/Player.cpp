@@ -13,6 +13,7 @@
 
 #include "Collider.h"
 #include "Animator.h"
+#include "Animation.h"
 
 Player::Player()
 {
@@ -25,8 +26,12 @@ Player::Player()
 
 	Texture* tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\PlayerSprite.bmp");
 	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"WALK_DOWN", tex, Vec2(0.f, 416.f), Vec2(96.1f, 104.f), Vec2(96.1f, 0.f), 1.f, 10);
-	GetAnimator()->Play(L"WALK_DOWN");
+	GetAnimator()->CreateAnimation(L"WALK_DOWN", tex, Vec2(0.f, 416.f), Vec2(96.1f, 104.f), Vec2(96.1f, 0.f), 0.05f, 10);
+	GetAnimator()->Play(L"WALK_DOWN", true);
+
+	Animation* anim = GetAnimator()->FindAnimation(L"WALK_DOWN");
+	for(int i = 0; i < anim->GetMaxFrame(); ++i)
+		anim->GetFrame(i).offset = Vec2(0.f, -20.f);
 }
 
 
@@ -59,6 +64,7 @@ void Player::update()
 	}
 
 	setPos(vPos);
+	GetAnimator()->update();
 }
 
 void Player::render(HDC _dc)
