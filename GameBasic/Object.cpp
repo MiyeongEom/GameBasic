@@ -4,11 +4,13 @@
 #include "pch.h"
 
 #include "Collider.h"
+#include "Animator.h"
 
 Object::Object()
 	: vPos{}
 	, vScale{}
 	, collider(nullptr)
+	, animator(nullptr)
 	, act(true)		// 모든 오브젝트는 생성 당시 살아있음
 {
 }
@@ -18,16 +20,27 @@ Object::Object(const Object& _ori)
 	, vPos{_ori.vPos}
 	, vScale{_ori.vScale}
 	, collider(nullptr)
+	, animator(nullptr)
 	, act(true)		
 {
-	collider = new Collider(*_ori.collider);
-	collider->owner = this;
+	if (_ori.collider) {
+		collider = new Collider(*_ori.collider);
+		collider->owner = this;
+	}
+
+	if (_ori.animator) {
+		animator = new Animator(*_ori.animator);
+		animator->owner = this;
+	}
 }
 
 Object::~Object()
 {
 	if (nullptr != collider)
-		delete collider;
+		delete collider; 
+
+	if (nullptr != animator)
+		delete animator;
 }
 
 void Object::render(HDC _hdc)
@@ -48,10 +61,19 @@ void Object::commponentRender(HDC _hdc)
 {
 	if (nullptr != collider)
 		collider->render(_hdc);
+
+	if (nullptr != animator)
+		animator->render(_hdc);
 }
 
 void Object::CreateCollider()
 {
 	collider = new Collider;
 	collider->owner = this;	
+}
+
+void Object::CreateAnimator()
+{
+	animator = new Animator;
+	animator->owner = this;
 }

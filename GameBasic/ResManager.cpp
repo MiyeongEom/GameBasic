@@ -11,10 +11,7 @@ ResManager::ResManager()
 
 ResManager::~ResManager()
 {
-	map<wstring, Texture*>::iterator iter = mapTex.begin();
-	for (; iter != mapTex.end(); ++iter) {
-		delete iter->second;
-	}
+	SafeDeleteMap(mapTex);
 }
 
 Texture* ResManager::LoadTexture(const wstring& _key, const wstring& _path)
@@ -38,11 +35,11 @@ Texture* ResManager::LoadTexture(const wstring& _key, const wstring& _path)
 
 Texture* ResManager::FindTexture(const wstring& _key)
 {
-	map<wstring, Texture*>::iterator iter = mapTex.find(_key);
+	map<wstring, Res*>::iterator iter = mapTex.find(_key);
 
 	if (iter == mapTex.end()) {
 		return nullptr;
 	}
 
-	return iter->second;
+	return (Texture*)iter->second;
 }

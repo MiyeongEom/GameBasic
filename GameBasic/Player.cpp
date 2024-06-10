@@ -12,16 +12,21 @@
 #include "Texture.h"
 
 #include "Collider.h"
+#include "Animator.h"
 
 Player::Player()
-	: tex(nullptr)
 {
 	// Texture Loading
-	tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\Player.bmp");
+	// tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\Player.bmp");
 
 	CreateCollider();	// 충돌 필요한 애들 다 넣어주기.
 	GetCollider()->SetOffsetPos(Vec2(0.f, 10.f));
 	GetCollider()->SetScale(Vec2(40.f, 50.f));
+
+	Texture* tex = ResManager::Instance()->LoadTexture(L"PlayerTex", L"Texture\\PlayerSprite.bmp");
+	CreateAnimator();
+	GetAnimator()->CreateAnimation(L"WALK_DOWN", tex, Vec2(0.f, 416.f), Vec2(96.1f, 104.f), Vec2(96.1f, 0.f), 1.f, 10);
+	GetAnimator()->Play(L"WALK_DOWN");
 }
 
 
@@ -58,22 +63,6 @@ void Player::update()
 
 void Player::render(HDC _dc)
 {
-	int width = (int)tex->Width();
-	int height = (int)tex->Height();
-
-	Vec2 vPos = getPos();
-
-	vPos.x - (float)(width / 2);
-	vPos.y - (float)(height / 2);
-
-	TransparentBlt(_dc
-		, int(vPos.x - (float)(width / 2))
-		, int(vPos.y - (float)(height / 2))
-		, width, height
-		, tex->GetDC()
-		, 0, 0, width, height
-		, RGB(255, 0, 255));
-
 	// 컴포넌트(충돌체 등) 가 있는 경우 렌더
 	commponentRender(_dc);
 }

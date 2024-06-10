@@ -1,13 +1,17 @@
 #pragma once
 
 class Collider;
+class Animator;
 
 class Object {
 private:
 	wstring		strName;
 	Vec2		vPos;
 	Vec2		vScale;
+
+	// Component
 	Collider*	collider;
+	Animator*	animator;
 
 	bool		act;		// 활성화 상태
 
@@ -30,6 +34,9 @@ public:
 
 	Collider* GetCollider() { return collider; }
 	void CreateCollider();
+
+	Animator* GetAnimator() { return animator; }
+	void CreateAnimator();
 
 	virtual void OnCollision(Collider* _other) {}
 	virtual void OnCollisionEnter(Collider* _other) {}

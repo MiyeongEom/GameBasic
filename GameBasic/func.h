@@ -16,3 +16,15 @@ void SafeDeleteVec(vector<T>& _vec)
 	}
 	_vec.clear();
 }
+
+template<typename T1, typename T2>
+void SafeDeleteMap(map<T1, T2>& _map)
+{
+	typename map <T1, T2>::iterator iter = _map.begin();
+
+	for (; iter != _map.end(); ++iter) {
+		if (nullptr != iter->second)
+			delete iter->second;
+	}
+	_map.clear();
+}

@@ -9,7 +9,7 @@ private:
 
 private:
 	Texture();
-	~Texture();
+	virtual ~Texture();
 
 public:
 	void Load(const wstring& _str);

@@ -41,9 +41,9 @@ void Scene_Start::Enter()
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
 
-	Object* otherPlayer = obj->Clone();
-	otherPlayer->setPos(Vec2(740.f, 384.f));
-	AddObject(otherPlayer, GROUP_TYPE::PLAYER);
+	// Object* otherPlayer = obj->Clone();
+	// otherPlayer->setPos(Vec2(740.f, 384.f));
+	// AddObject(otherPlayer, GROUP_TYPE::PLAYER);
 
 	// Monster
 	int monCount = 2;

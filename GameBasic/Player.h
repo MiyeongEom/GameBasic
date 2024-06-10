@@ -5,7 +5,7 @@ class Texture;
 
 class Player : public Object {
 private:
-	Texture* tex;
+	// exture* tex;
 
 	void CreateMissile();
 	CLONE(Player);

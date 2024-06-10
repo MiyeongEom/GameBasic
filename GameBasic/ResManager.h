@@ -2,12 +2,13 @@
 
 // 한번만 로딩하고 키 값으로 불러오도록 하자
 
+class Res;
 class Texture;
 
 class ResManager {
 	SINGLE(ResManager);
 private:
-	map<wstring, Texture*> mapTex;
+	map<wstring, Res*> mapTex;
 
 public:
 	Texture* LoadTexture(const wstring& _key, const wstring& _path);

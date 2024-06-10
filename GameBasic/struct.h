@@ -49,6 +49,10 @@ public:
 		return Vec2(x / other.x, y / other.y);
 	}
 
+	Vec2 operator * (int _i)
+	{
+		return Vec2(x * (float)_i, y * (float)_i);
+	}
 
 	Vec2()
 		: x(0.f)
