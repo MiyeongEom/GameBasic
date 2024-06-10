@@ -43,6 +43,8 @@ void EventManager::Excute(const Event& _eve)
 	}
 		break;
 	case EVENT_TYPE::SCENE_CHAGNE:
+		// lParam : Next Scene Type
+		SceneManager::Instance()->ChangeScene((SCENE_TYPE)_eve.lParam);
 		break;
 	default:
 		break;

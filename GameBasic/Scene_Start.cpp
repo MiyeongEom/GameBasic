@@ -11,6 +11,8 @@
 #include "Texture.h"
 
 #include "ColliderManager.h"
+#include "KeyManager.h"
+#include "SceneManager.h"
 
 Scene_Start::Scene_Start()
 {
@@ -21,6 +23,16 @@ Scene_Start::~Scene_Start()
 {
 }
 
+void Scene_Start::update()
+{
+	Scene::update();
+
+	// 추가적으로 하고자 하는 일 추가
+	if (KEY_TAP(KEY::ENTER)) {
+		ChangeSceneEvent(SCENE_TYPE::TOOL);
+	}
+}
+
 void Scene_Start::Enter()
 {
 	// Object 추가
@@ -28,6 +40,10 @@ void Scene_Start::Enter()
 	obj->setPos(Vec2(640.f, 384.f));
 	obj->setScale(Vec2(100.f, 100.f));
 	AddObject(obj, GROUP_TYPE::PLAYER);
+
+	Object* otherPlayer = obj->Clone();
+	otherPlayer->setPos(Vec2(740.f, 384.f));
+	AddObject(otherPlayer, GROUP_TYPE::PLAYER);
 
 	// Monster
 	int monCount = 2;
@@ -53,5 +69,8 @@ void Scene_Start::Enter()
 
 void Scene_Start::Exit()
 {
+	// 모든 물체 삭제
+	DeleteAll();
+
 	ColliderManager::Instance()->Reset();
 }

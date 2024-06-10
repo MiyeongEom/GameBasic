@@ -13,7 +13,7 @@ public:
 	void SetName(const wstring& _strName) { strName = _strName; }
 	const wstring& GetName() { return strName; }
 
-	void update();
+	virtual void update();
 	void finalUpdate();
 	void render(HDC _hdc);
 
@@ -30,4 +30,7 @@ public:
 	{
 		return  arrObj[(UINT)_type];
 	}
+
+	void DeleteGroup(GROUP_TYPE type);
+	void DeleteAll();
 };

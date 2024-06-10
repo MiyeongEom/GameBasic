@@ -8,6 +8,7 @@ private:
 	Texture* tex;
 
 	void CreateMissile();
+	CLONE(Player);
 
 public:
 	Player();

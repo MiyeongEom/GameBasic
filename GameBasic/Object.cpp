@@ -13,6 +13,17 @@ Object::Object()
 {
 }
 
+Object::Object(const Object& _ori)
+	: strName(_ori.strName)
+	, vPos{_ori.vPos}
+	, vScale{_ori.vScale}
+	, collider(nullptr)
+	, act(true)		
+{
+	collider = new Collider(*_ori.collider);
+	collider->owner = this;
+}
+
 Object::~Object()
 {
 	if (nullptr != collider)

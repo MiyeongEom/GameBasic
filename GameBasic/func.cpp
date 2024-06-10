@@ -21,3 +21,12 @@ void DeleteObject(Object* _obj)
 
 	EventManager::Instance()->AddEvent(evn);
 }
+
+void ChangeSceneEvent(SCENE_TYPE _next)
+{
+	Event evn = {};
+	evn.even = EVENT_TYPE::SCENE_CHAGNE;
+	evn.lParam = (DWORD_PTR)_next;
+
+	EventManager::Instance()->AddEvent(evn);
+}

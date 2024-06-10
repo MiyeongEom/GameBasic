@@ -53,3 +53,16 @@ void Scene::render(HDC _hdc)
 		}
 	}
 }
+
+void Scene::DeleteGroup(GROUP_TYPE type)
+{
+	// SafeDeleteVec<Object*>(arrObj[(UINT)type]);
+	SafeDeleteVec(arrObj[(UINT)type]);		// 컴파일러가 알아서 넣어줌
+}
+
+void Scene::DeleteAll()
+{
+	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i) {
+		DeleteGroup((GROUP_TYPE)i);
+	}
+}

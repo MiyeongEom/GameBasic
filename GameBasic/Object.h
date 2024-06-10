@@ -13,6 +13,7 @@ private:
 
 public:
 	Object();
+	Object(const Object& _ori);
 	virtual ~Object();
 
 	void setPos(Vec2 _vPos) { vPos = _vPos; }
@@ -39,9 +40,11 @@ public:
 	virtual void render(HDC _hdc);
 	virtual void finalUpdate() final;
 
+	virtual Object* Clone() = 0;
+
 	void commponentRender(HDC _hdc);
 
-	void SetDead() { act = false; }		// 무조건 이벤트 클래스만 사용가능
+	void SetDead() { act = false; }		
 	friend class EvenManager;
 };
 

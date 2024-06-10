@@ -14,6 +14,7 @@ public:
 	~Monster();
 
 	virtual void update();
+	CLONE(Monster);
 
 	float GetSpeed() { return speed; }
 	Vec2 GetCenterPos() { return centerPos; }

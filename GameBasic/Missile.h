@@ -21,4 +21,5 @@ public:
 	}
 
 	virtual void OnCollisionEnter(Collider* _other);
+	CLONE(Missile);
 };
