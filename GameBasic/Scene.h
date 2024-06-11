@@ -6,12 +6,18 @@ private:
 	vector<Object*> arrObj[(UINT)GROUP_TYPE::END];
 	wstring			strName;
 
+	UINT			tileX;	// 타일 가로 개수
+	UINT			tileY;	// 타일 새로 개수
+
 public:
 	Scene();
 	virtual ~Scene();
 
 	void SetName(const wstring& _strName) { strName = _strName; }
 	const wstring& GetName() { return strName; }
+
+	UINT GetTileX() { return tileX; }
+	UINT GetTileY() { return tileY; }
 
 	virtual void update();
 	void finalUpdate();
@@ -30,6 +36,8 @@ public:
 	{
 		return  arrObj[(UINT)_type];
 	}
+
+	void CreateTile(UINT _xCount, UINT _yCount);
 
 	void DeleteGroup(GROUP_TYPE type);
 	void DeleteAll();

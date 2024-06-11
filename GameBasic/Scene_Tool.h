@@ -11,5 +11,7 @@ public:
 	virtual void update();
 	virtual void Enter();
 	virtual void Exit();
+
+	void SetTileIdx();
 };
 

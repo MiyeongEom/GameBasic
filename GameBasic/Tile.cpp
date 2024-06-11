@@ -5,7 +5,7 @@
 
 Tile::Tile()
 	: tileTex(nullptr)
-	, index(6)
+	, index(0)
 {
 	setScale(Vec2(TILE_SIZE, TILE_SIZE));
 }

@@ -2,8 +2,12 @@
 #include "Scene.h"
 
 #include "Object.h"
+#include "Tile.h"
+#include "ResManager.h"
 
 Scene::Scene()
+	: tileX(0)
+	, tileY(0)
 {
 
 }
@@ -52,6 +56,21 @@ void Scene::render(HDC _hdc)
 			}
 		}
 	}
+}
+
+void Scene::CreateTile(UINT _xCount, UINT _yCount)
+{
+	tileX = _xCount;
+	tileY = _yCount;
+
+	Texture* tlieTexure = ResManager::Instance()->LoadTexture(L"Tile", L"Texture\\Tile.bmp");
+	for (UINT i = 0; i < _yCount; ++i)
+		for (UINT j = 0; j < _xCount; ++j) {
+			Tile* tile = new Tile;
+			tile->setPos(Vec2((float)(j * TILE_SIZE), (float)(i * TILE_SIZE)));
+			tile->SetTexture(tlieTexure);
+			AddObject(tile, GROUP_TYPE::TILE);
+		}
 }
 
 void Scene::DeleteGroup(GROUP_TYPE type)

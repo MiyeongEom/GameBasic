@@ -17,5 +17,6 @@ public:
 	~Tile();
 
 	void SetTexture(Texture* _tex) { tileTex = _tex; }
+	void AddImgIdx() { ++index; }
 };
 
