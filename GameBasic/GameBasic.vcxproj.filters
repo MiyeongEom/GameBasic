@@ -88,6 +88,9 @@
     <Filter Include="Engine\03. Manager\Camera">
       <UniqueIdentifier>{696566ff-0412-432f-ad03-fabf68c3bf89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Tile">
+      <UniqueIdentifier>{164f01ce-f362-4d98-96b5-6c56e60a4770}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -183,6 +186,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Engine\03. Manager\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Engine\04. Object\Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -259,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Engine\03. Manager\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Engine\04. Object\Tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

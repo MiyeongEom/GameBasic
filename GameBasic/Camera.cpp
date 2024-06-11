@@ -11,7 +11,7 @@ Camera::Camera()
 	: targetObj(nullptr)
 	, time(0.5f)
 	, speed(0.f)
-	, accTime(0.f)
+	, accTime(0.5f)
 {
 
 }

@@ -24,9 +24,12 @@
 
 #define PI 3.1415926535f
 
+#define TILE_SIZE 64
+
 // 씬에 존재하는 오브젝트를 구별하는 그룹
 enum class GROUP_TYPE {
 	DEFAULT,
+	TILE,
 	PLAYER,
 	PROJ_PALYER,		// 플레이어가 쏜 투사체
 	PROJ_MONSTER,		// 몬스터가 쏜 투사체
