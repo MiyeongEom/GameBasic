@@ -32,7 +32,7 @@ void SceneManager::init()
 	// arrScene[(UINT)SCENE_TYPE::STAGE_02] = new Scene_Stage02;
 
 	// ÇöÀç ¾À ÁöÁ¤
-	currScene = arrScene[(UINT)SCENE_TYPE::TOOL];
+	currScene = arrScene[(UINT)SCENE_TYPE::START];
 	currScene->Enter();
 }
 
